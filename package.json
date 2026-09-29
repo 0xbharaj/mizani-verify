@@ -1,0 +1,71 @@
+{
+  "name": "@mizani/verify",
+  "version": "0.1.0",
+  "description": "Check a Mizani Carbon release download against its published fingerprint and its on-chain attestation (EAS)",
+  "license": "MIT",
+  "author": "Mizani Carbon",
+  "homepage": "https://mizani-carbon.co/verify",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xbharaj/mizani-verify.git"
+  },
+  "keywords": [
+    "emission-factors",
+    "carbon",
+    "ghg",
+    "ifrs-s2",
+    "kenya",
+    "merkle",
+    "eas",
+    "attestation",
+    "verification"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./cli": "./src/cli.ts"
+  },
+  "bin": {
+    "mizani-verify": "./bin/mizani-verify.ts"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "test-vectors.json"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/src/index.d.ts",
+        "default": "./dist/src/index.js"
+      },
+      "./cli": {
+        "types": "./dist/src/cli.d.ts",
+        "default": "./dist/src/cli.js"
+      }
+    },
+    "bin": {
+      "mizani-verify": "./dist/bin/mizani-verify.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "tsc -p tsconfig.build.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "viem": "^2.57.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.2"
+  }
+}
